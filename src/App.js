@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
-
+import './assets/scss/common.scss';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Index from './components/Index/';
+import Article from './components/Index/';
+import Admin from './components/Index/';
+import NotFound from './components/NotFound/';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <Route exact path="/" component={Index} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/article:id" component={Article} />
+        <Route path="*" component={NotFound} />
+      </Router>
     );
   }
 }
